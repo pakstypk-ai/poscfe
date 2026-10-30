@@ -1,0 +1,33 @@
+{
+  "name": "cafe-pos",
+  "productName": "Cafe POS",
+  "version": "1.2.0",
+  "description": "Offline Cafe & Restaurant POS",
+  "main": "electron/main.js",
+  "author": "Cafe POS",
+  "scripts": {
+    "start": "electron .",
+    "postinstall": "electron-builder install-app-deps",
+    "build": "electron-builder --win nsis --x64 --publish never"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.7.0"
+  },
+  "devDependencies": {
+    "electron": "33.2.1",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "pk.cafepos.app",
+    "productName": "Cafe POS",
+    "files": ["electron/**/*", "renderer/**/*", "package.json"],
+    "asarUnpack": ["**/node_modules/better-sqlite3/**"],
+    "win": { "target": "nsis" },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
